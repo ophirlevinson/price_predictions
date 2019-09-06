@@ -37,7 +37,7 @@ class Data():
         ax = plt.subplot(4,1,1)
         
         plt.ylabel('Price')
-        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
+        plt.title('LinearRegression (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_regresion_pred),'g')
         ax.set_xticklabels([])
@@ -45,7 +45,7 @@ class Data():
         #Linear Rigde
         ax = plt.subplot(4,1,2)
         plt.ylabel('Price')
-        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
+        plt.title('Ridge (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_ridge_pred),'g')
         ax.set_xticklabels([])
@@ -53,7 +53,7 @@ class Data():
         #Lasso Rigde
         ax = plt.subplot(4,1,3)
         plt.ylabel('Price')
-        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
+        plt.title('Lasso (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_lasso_pred),'g')
         ax.set_xticklabels([])
