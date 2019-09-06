@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 class Data():
-    def __init__(self,fname='AAPL.csv',batch_size=30):
+    def __init__(self,fname='AAPL.csv',batch_size=10):
         self.price = np.array(pd.read_csv(fname).loc[:,'Close'])
         self.date = np.array([x for x in range(0,len(self.price))])#np.array(pd.read_csv(fname).loc[:,'Date'])
         self.batch_size = batch_size
@@ -37,7 +37,7 @@ class Data():
         ax = plt.subplot(4,1,1)
         
         plt.ylabel('Price')
-        plt.title('Linear Regression (batch=10)')
+        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_regresion_pred),'g')
         ax.set_xticklabels([])
@@ -45,7 +45,7 @@ class Data():
         #Linear Rigde
         ax = plt.subplot(4,1,2)
         plt.ylabel('Price')
-        plt.title('Linear Ridge Regression (batch=10)')
+        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_ridge_pred),'g')
         ax.set_xticklabels([])
@@ -53,7 +53,7 @@ class Data():
         #Lasso Rigde
         ax = plt.subplot(4,1,3)
         plt.ylabel('Price')
-        plt.title('Linear Lasso Regression (batch=10)')
+        plt.title('Linear Regression (batch='+str(self.batch_size)+')')
         plt.plot(self.price[data.batch_size:],'b')
         plt.plot(np.array(self.linear_lasso_pred),'g')
         ax.set_xticklabels([])
@@ -66,7 +66,7 @@ class Data():
         plt.plot(np.array(self.linear_ridge_pred) - np.array(self.linear_regresion_pred),'r')
         ax.set_xticklabels([])
 
-data = Data()
+data = Data(batch_size=60)
 
 for batch_data in Data().generate():
     date, price = batch_data
